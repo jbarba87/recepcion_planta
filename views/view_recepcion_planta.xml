@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="lote_tree">
+      <field name="name">Recepcion</field>
+      <field name="model">recepcion.recepcionplanta</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="fechaingreso"/>
+          <field name="responsable"/>
+          <field name="sede"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="lote_form">
+      <field name="name">Recepcion</field>
+      <field name="model">recepcion.recepcionplanta</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group>
+                <field name="fechaingreso"/>
+
+                <field name="responsable"/>
+                <field name="sede"/>
+                <field name="item">
+                  <tree>
+                    <field name="categoria"/>
+                    <field name="pbruto"/>
+                    <field name="embalaje"/>
+                  </tree>
+                </field>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record id="action_recepcion" model="ir.actions.act_window">
+      <field name="name">Recepcion en planta</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">recepcion.recepcionplanta</field>
+     <!-- <field name="context"> {"search_default_filter_socio":1} </field>  search_default_<filter name>  -->
+      <field name="context">{}</field>
+      <!-- <field name="domain">[('es_socio', '=', True)]</field> -->
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="recepcion_root" name="Recepcion" sequence="" />
+
+    <menuitem id="recepcion" name="Recepcion en planta"  sequence="0"  parent="recepcion_root" action="action_recepcion"/>
+  </data>
+</odoo>
