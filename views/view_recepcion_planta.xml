@@ -22,17 +22,24 @@
             <group>
               <group>
                 <field name="fechaingreso"/>
-
                 <field name="responsable"/>
                 <field name="sede"/>
-                <field name="item">
-                  <tree>
-                    <field name="categoria"/>
-                    <field name="pbruto"/>
-                    <field name="embalaje"/>
-                  </tree>
-                </field>
+                <field name="total_peso_bruto"/>
+                <field name="total_peso_bruto_brosab"/>
+                <field name="total_peso_bruto_brosac"/>
+                <field name="total_peso_bruto_surib"/>
+                <field name="total_peso_bruto_suric"/>
+
               </group>
+              <field name="item">
+                <tree editable="bottom">
+                  <field name="categoria"/>
+                  <field name="pbruto"/>
+                  <field name="tara"/>
+                  <field name="pneto"/>
+                  <field name="embalaje"/>
+                </tree>
+              </field>
             </group>
           </sheet>
         </form>

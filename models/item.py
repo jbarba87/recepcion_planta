@@ -3,6 +3,13 @@ from odoo import models, fields, api
 class item(models.Model):
   _name = 'recepcion.item'
 
+
+  @api.one
+  @api.depends('pbruto', 'tara')
+  def calcula_pesoneto(self):
+    if self.pbruto and self.tara is not False:
+      self.pneto = self.pbruto + self.tara
+
   categoria = fields.Selection([
     ('Brosa B', 'Brosa B'),
     ('Brosa C', 'Brosa C'),
@@ -14,7 +21,7 @@ class item(models.Model):
 
   tara = fields.Float(string = "Tara")
 
-  pneto = fields.Float(string = "Peso Neto") 
+  pneto = fields.Float(string = "Peso Neto", compute="calcula_pesoneto") 
 
   embalaje = fields.Selection([
     ('Rafia', 'Rafia'),
