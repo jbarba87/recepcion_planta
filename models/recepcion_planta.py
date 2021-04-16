@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class recepcion_planta(models.Model):
   _name = 'recepcion.recepcionplanta'
-
+  #_rec_name = "identificacion"
   item = fields.One2many('recepcion.item', 'recepcion_planta_id', string="Items")
   fechaingreso = fields.Date(string ="Fecha de ingreso", default=datetime.now().strftime('%Y-%m-%d'))
 
@@ -39,7 +39,8 @@ class recepcion_planta(models.Model):
           acc_surib += item.pbruto
         if item.categoria == 'Suri C':
           acc_suric += item.pbruto
-        
+      
+      self.total_peso_bruto = acc_brosab + acc_brosac + acc_surib + acc_suric
       self.total_peso_bruto_brosab = acc_brosab
       self.total_peso_bruto_brosac = acc_brosac
       self.total_peso_bruto_surib = acc_surib

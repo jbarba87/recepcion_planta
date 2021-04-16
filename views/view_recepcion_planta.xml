@@ -7,6 +7,8 @@
       <field name="arch" type="xml">
         <tree>
           <field name="fechaingreso"/>
+          <field name="total_peso_bruto"/>
+
           <field name="responsable"/>
           <field name="sede"/>
         </tree>
@@ -24,12 +26,13 @@
                 <field name="fechaingreso"/>
                 <field name="responsable"/>
                 <field name="sede"/>
-                <field name="total_peso_bruto"/>
+                
                 <field name="total_peso_bruto_brosab"/>
                 <field name="total_peso_bruto_brosac"/>
                 <field name="total_peso_bruto_surib"/>
                 <field name="total_peso_bruto_suric"/>
-
+                
+                <h3>Peso bruto total: <field name="total_peso_bruto"/></h3>
               </group>
               <field name="item">
                 <tree editable="bottom">
@@ -37,6 +40,8 @@
                   <field name="pbruto"/>
                   <field name="tara"/>
                   <field name="pneto"/>
+                  <field name="pneto_libras"/>
+
                   <field name="embalaje"/>
                 </tree>
               </field>
@@ -47,6 +52,20 @@
     </record>
 
 
+
+  <record id="view_recepcion_filter" model="ir.ui.view">
+    <field name="name">recepcion.planta.filter</field>
+      <field name="model">recepcion.recepcionplanta</field>
+      <field name="arch" type="xml">
+      <search string="Search">
+        
+        <group expand="0" string="Group By">   
+          <filter string="Agrupar por fecha" name="fechaingreso"  context="{'group_by':'fechaingreso'}"/>
+        </group>
+      </search>
+    </field>
+  </record>
+
     <record id="action_recepcion" model="ir.actions.act_window">
       <field name="name">Recepcion en planta</field>
       <field name="type">ir.actions.act_window</field>
@@ -55,7 +74,7 @@
       <field name="context">{}</field>
       <!-- <field name="domain">[('es_socio', '=', True)]</field> -->
       <field name="view_type">form</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,pivot,graph</field>
     </record>
 
 

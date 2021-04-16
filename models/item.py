@@ -8,7 +8,13 @@ class item(models.Model):
   @api.depends('pbruto', 'tara')
   def calcula_pesoneto(self):
     if self.pbruto and self.tara is not False:
-      self.pneto = self.pbruto + self.tara
+      self.pneto = self.pbruto - self.tara
+
+
+  @api.one
+  @api.depends('pneto')
+  def calcula_peso_libra(self):
+    self.pneto_libras = self.pneto*2.2046
 
   categoria = fields.Selection([
     ('Brosa B', 'Brosa B'),
@@ -22,6 +28,8 @@ class item(models.Model):
   tara = fields.Float(string = "Tara")
 
   pneto = fields.Float(string = "Peso Neto", compute="calcula_pesoneto") 
+
+  pneto_libras = fields.Float(string = "Peso Neto (lb)", compute="calcula_peso_libra") 
 
   embalaje = fields.Selection([
     ('Rafia', 'Rafia'),
