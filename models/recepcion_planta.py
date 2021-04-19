@@ -8,6 +8,8 @@ class recepcion_planta(models.Model):
   item = fields.One2many('recepcion.item', 'recepcion_planta_id', string="Items")
   fechaingreso = fields.Date(string ="Fecha de ingreso", default=datetime.now().strftime('%Y-%m-%d'))
 
+  procedencia = fields.Char(size=30)
+
   responsable = fields.Many2one('res.partner', string = "Responsable")
   sede = fields.Selection([
     ('Ayacucho', 'Ayacucho'),

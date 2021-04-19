@@ -11,6 +11,8 @@
 
           <field name="responsable"/>
           <field name="sede"/>
+          <field name="procedencia"/>
+
         </tree>
       </field>
     </record>
@@ -26,7 +28,8 @@
                 <field name="fechaingreso"/>
                 <field name="responsable"/>
                 <field name="sede"/>
-                
+                <field name="procedencia"/>
+
                 <field name="total_peso_bruto_brosab"/>
                 <field name="total_peso_bruto_brosac"/>
                 <field name="total_peso_bruto_surib"/>
